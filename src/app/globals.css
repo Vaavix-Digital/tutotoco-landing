@@ -1,0 +1,111 @@
+@import "tailwindcss";
+
+:root {
+  --color-primary: #6c4df6;
+  --color-primary-dark: #5238d4;
+  --color-primary-soft: #8b73ff;
+  --color-secondary: #20c08b;
+  --color-accent: #f05a78;
+  --color-sun: #ffc83d;
+  --color-bg: #efebff;
+  --color-surface: #ffffff;
+  --color-cream: #fff6d6;
+  --color-ink: #2a1f4d;
+  --color-muted: #5e5388;
+  --color-border: #ddd6fb;
+}
+
+@theme inline {
+  --font-display: var(--font-baloo), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: ui-sans-serif, system-ui, sans-serif;
+  --color-primary: var(--color-primary);
+  --color-ink: var(--color-ink);
+  --color-muted: var(--color-muted);
+  --color-border: var(--color-border);
+  --color-bg: var(--color-bg);
+}
+
+html { scroll-behavior: smooth; scroll-padding-top: 96px; }
+body {
+  margin: 0;
+  /* The reference's later shadcn base rule wins: system UI font and near-black text, not Nunito. */
+  color: hsl(0 0% 3.9%);
+  background-color: #fff;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  line-height: 1.5;
+  overflow-x: hidden;
+}
+
+@layer components {
+.disp { font-family: var(--font-baloo), ui-sans-serif, system-ui, sans-serif; font-weight: 800; line-height: 1.05; }
+.wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+.sec { padding: 80px 0; }
+.muted { color: var(--color-muted); }
+.h1 { font-size: 72px; }
+.h2 { font-size: 44px; }
+.h2-lg { font-size: 48px; }
+
+.card-p {
+  background: #fff; border: 2px solid var(--color-border); border-radius: 22px; padding: 24px;
+  transition: transform .2s;
+}
+.card-p:hover { transform: translateY(-3px); }
+
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px; cursor: pointer;
+  border: 0; border-radius: 16px; min-height: 48px; padding: 0 24px; font-size: 17px; font-weight: 800;
+  transition: transform .15s, box-shadow .15s;
+}
+.btn:hover { transform: translateY(1px); }
+.btn:active { transform: translateY(3px); box-shadow: 0 1px currentColor; }
+.btn-violet { color: #fff; background: #6c4df6; box-shadow: 0 4px #5238d4; }
+.btn-ink { color: #fff; background: #2a1f4d; box-shadow: 0 4px #120c28; }
+.btn-mint { color: #2a1f4d; background: #20c08b; box-shadow: 0 4px #14966b; }
+.btn-white { color: #2a1f4d; background: #fff; box-shadow: 0 4px #ddd6fb; }
+
+.pill {
+  display: inline-flex; align-items: center; background: #fff; border: 2px solid var(--color-border);
+  border-radius: 999px; padding: 6px 16px; font-size: 15px; font-weight: 800;
+}
+.tile { display: grid; place-items: center; width: 48px; height: 48px; border-radius: 14px; flex-shrink: 0; }
+.bubble {
+  position: absolute; background: #fff; border: 2px solid var(--color-border); border-radius: 999px;
+  padding: 6px 14px; font-family: var(--font-baloo), sans-serif; font-size: 20px; font-weight: 800;
+  box-shadow: 0 8px 20px #6c4df626; animation: bob 3.2s ease-in-out infinite;
+}
+.phone { animation: bob 2.6s ease-in-out infinite; }
+.marquee { display: flex; gap: 12px; width: max-content; animation: marquee 40s linear infinite; }
+.marquee:hover { animation-play-state: paused; }
+.stroke-draw { stroke-dasharray: 260; stroke-dashoffset: 260; animation: draw 3s ease-in-out infinite; }
+.wobble { transform-origin: 50% 90%; animation: wobble 2.4s ease-in-out infinite; }
+.fade-in { animation: fadein .5s both; }
+
+}
+
+details > summary { cursor: pointer; list-style: none; }
+details > summary::-webkit-details-marker { display: none; }
+.chev { transition: transform .2s; }
+details[open] .chev { transform: rotate(180deg); }
+
+@keyframes bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+@keyframes marquee { to { transform: translateX(-50%); } }
+@keyframes draw { 0% { stroke-dashoffset: 260; } 70%, 100% { stroke-dashoffset: 0; } }
+@keyframes wobble { 0%, 100% { transform: rotate(-6deg); } 50% { transform: rotate(6deg); } }
+@keyframes fadein { 0% { opacity: 0; transform: translateY(8px); } 100% { opacity: 1; transform: none; } }
+
+@layer components {
+/* .sec's vertical shorthand wipes .wrap's side padding; restore it wherever the 1120px box no longer centers itself. */
+@media (max-width: 1167px) {
+  .wrap.sec { padding-left: 24px; padding-right: 24px; }
+}
+@media (max-width: 640px) {
+  .h1 { font-size: 44px; }
+  .h2, .h2-lg { font-size: 32px; }
+  .sec { padding: 56px 0; }
+  .bubble { display: none; }
+}
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; animation: none !important; }
+}

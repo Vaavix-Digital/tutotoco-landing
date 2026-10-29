@@ -1,0 +1,86 @@
+import type { LanguageDetail } from "@/types";
+
+const latin = (q: string, a: string) => ({ scriptQ: q, scriptA: a });
+
+export const LANGUAGE_DETAILS: Record<string, LanguageDetail> = {
+  english: {
+    phrases: [["Hello.", "", "Hello."], ["Thank you.", "", "Thank you."], ["Could you repeat that, please?", "", "Could you repeat that, please?"]],
+    script: null,
+    chat: [["Hi there, what can I get you?", false], ["A flat white, please.", true], ["Sure. Anything else?", false]],
+    dialect: "Tutotoco teaches clear, widely understood English and points out common differences between regions.",
+    exam: "IELTS tracks are available.",
+    ...latin("Does English have a different script?", "English uses the Latin alphabet, so you can start speaking straight away."),
+  },
+  spanish: {
+    phrases: [["Hola.", "", "Hola."], ["Gracias.", "", "Gracias."], ["¿Cuánto cuesta?", "How much is it?", "¿Cuánto cuesta?"]],
+    script: null,
+    chat: [["Hola, ¿qué te pongo?", false], ["Un café con leche, por favor.", true], ["Marchando. Son dos euros.", false]],
+    dialect: "Tutotoco teaches widely understood Spanish and flags common regional differences.",
+    exam: "DELE tracks are available.",
+    ...latin("Do I need to learn a new script?", "No. Spanish uses the Latin alphabet with a few accents, such as á and ñ."),
+  },
+  french: {
+    phrases: [["Bonjour.", "", "Bonjour."], ["Merci.", "", "Merci."], ["Combien ça coûte ?", "How much is it?", "Combien ça coûte ?"]],
+    script: null,
+    chat: [["Bonjour, vous désirez ?", false], ["Un café, s’il vous plaît.", true], ["Voilà. Ça fait deux euros.", false]],
+    dialect: "Tutotoco teaches standard French that works across regions.",
+    exam: "DELF tracks are available.",
+    ...latin("Do I need to learn a new script?", "No. French uses the Latin alphabet with accents, such as é and ç."),
+  },
+  german: {
+    phrases: [["Hallo.", "", "Hallo."], ["Danke.", "", "Danke."], ["Wie viel kostet das?", "How much is that?", "Wie viel kostet das?"]],
+    script: null,
+    chat: [["Guten Tag, was darf es sein?", false], ["Einen Kaffee, bitte.", true], ["Kommt sofort. Das macht zwei Euro.", false]],
+    dialect: "Tutotoco teaches standard German understood in Germany, Austria and Switzerland.",
+    exam: "Goethe tracks are available.",
+    ...latin("Do I need to learn a new script?", "No. German uses the Latin alphabet plus ä, ö, ü and ß."),
+  },
+  arabic: {
+    phrases: [["مرحبًا", "marhaban", "مرحبا"], ["شكرًا", "shukran", "شكرا"], ["كم السعر؟", "kam as-si‘r", "كم السعر"]],
+    script: "Arabic is written right to left, and letters change shape inside a word. The Script Lab teaches the letters by tracing with stroke order.",
+    chat: [["أهلاً، ماذا تريد؟", false], ["قهوة من فضلك.", true], ["حالاً. تفضل.", false]],
+    dialect: "Tutotoco starts with Modern Standard Arabic and everyday phrases.",
+    exam: "There is no single standard exam track yet.",
+    ...latin("Do I need to learn the script?", "Yes, and Tutotoco helps. The Script Lab teaches letters by tracing, with romanization alongside."),
+  },
+  hindi: {
+    phrases: [["नमस्ते", "namaste", "नमस्ते"], ["धन्यवाद", "dhanyavaad", "धन्यवाद"], ["यह कितने का है?", "yah kitne ka hai", "यह कितने का है"]],
+    script: "Hindi uses Devanagari, where letters hang from a line. The Script Lab teaches it by tracing with stroke order.",
+    chat: [["नमस्ते, क्या लेंगे?", false], ["एक चाय, कृपया।", true], ["ज़रूर। यह लीजिए।", false]],
+    dialect: "Tutotoco teaches standard Hindi used in everyday conversation.",
+    exam: "There is no single standard exam track yet.",
+    ...latin("Do I need to learn the script?", "Yes, and Tutotoco helps. The Script Lab teaches Devanagari by tracing, with romanization alongside."),
+  },
+  japanese: {
+    phrases: [["こんにちは", "konnichiwa", "こんにちは"], ["ありがとう", "arigatou", "ありがとう"], ["いくらですか？", "ikura desu ka", "いくらですか"]],
+    script: "Japanese uses hiragana, katakana and kanji. Start with hiragana in the Script Lab, tracing each stroke in order.",
+    chat: [["いらっしゃいませ。ご注文は？", false], ["コーヒーをお願いします。", true], ["かしこまりました。", false]],
+    dialect: "Tutotoco teaches standard Japanese and polite everyday speech.",
+    exam: "JLPT tracks are available.",
+    ...latin("Do I need to learn the scripts?", "Yes, and Tutotoco helps. Begin with hiragana, then katakana, then kanji as you go."),
+  },
+  korean: {
+    phrases: [["안녕하세요", "annyeonghaseyo", "안녕하세요"], ["감사합니다", "gamsahamnida", "감사합니다"], ["얼마예요?", "eolmayeyo", "얼마예요"]],
+    script: "Korean uses Hangul, a logical alphabet you can learn in days. The Script Lab teaches it by tracing.",
+    chat: [["어서 오세요. 뭐 드릴까요?", false], ["커피 한 잔 주세요.", true], ["네, 잠시만요.", false]],
+    dialect: "Tutotoco teaches standard Seoul Korean and polite speech.",
+    exam: "TOPIK tracks are available.",
+    ...latin("Do I need to learn Hangul?", "Yes, and it is friendlier than it looks. The Script Lab teaches Hangul by tracing."),
+  },
+  mandarin: {
+    phrases: [["你好", "nǐ hǎo", "你好"], ["谢谢", "xièxie", "谢谢"], ["多少钱？", "duōshao qián", "多少钱"]],
+    script: "Mandarin uses Hanzi characters, with pinyin to show how they sound. The Script Lab teaches characters by tracing with stroke order.",
+    chat: [["你好，要喝点什么？", false], ["我要一杯咖啡，谢谢。", true], ["好的，请稍等。", false]],
+    dialect: "Tutotoco teaches standard Mandarin (Putonghua) with pinyin support.",
+    exam: "HSK tracks are available.",
+    ...latin("Do I need to learn characters?", "You can begin with pinyin, then add Hanzi through tracing in the Script Lab at your own pace."),
+  },
+  portuguese: {
+    phrases: [["Olá.", "", "Olá"], ["Obrigado.", "", "Obrigado"], ["Quanto custa?", "How much is it?", "Quanto custa"]],
+    script: null,
+    chat: [["Olá, o que vai ser?", false], ["Um café, por favor.", true], ["Já vai. Mais alguma coisa?", false]],
+    dialect: "Tutotoco teaches Brazilian Portuguese, as spoken across Brazil.",
+    exam: "CELPE-Bras tracks are available.",
+    ...latin("Do I need to learn a new script?", "No. Portuguese uses the Latin alphabet with accents, such as ã and ç."),
+  },
+};
